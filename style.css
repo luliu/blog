@@ -1,0 +1,42 @@
+body {
+    font-family: 'Libre Baskerville', serif;
+    background-color: EEEEEE;
+    margin: 0;
+}
+
+h1 {
+    background-color: C6C6C6;
+    margin: 0;
+    text-align: center;
+    padding: 3em 0 1em 0;
+}
+
+div.post {
+    max-width: 700px;
+    margin: 3em auto;
+    padding: 3em 3em;
+    background-color: FEFEFE;
+    box-shadow: 5px 5px 0px #C6C6C6;
+}
+
+div.post h2 {
+    font-family: 'Scope One', serif;
+    text-align: right;
+}
+
+div.post p {
+    line-height: 1.8em;
+}
+
+div.post p:first-of-type:first-letter {
+    font-size: 200%;
+    position: relative;
+    top : 1em;
+    color: red;
+}
+
+div.resume {
+    position: fixed;
+    top:10px;
+    left:10px;
+}
