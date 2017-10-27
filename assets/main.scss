@@ -1,0 +1,66 @@
+---
+---
+@import "whiteglass";
+
+$black: #1F2421;
+$white: #FDFFFF;
+$gray: #B4B8C5;
+$blue: #577399;
+$darkblue: #495867;
+
+header.site-header {
+    background-color: $black;
+    padding-top: 3em;
+}
+
+.site-title, .site-title:visited {
+    color: $white;
+}
+
+.site-nav .page-link {
+    color: $gray;
+}
+
+.site-nav .page-link:hover {
+    color: $white;
+}
+
+div.post-content p:first-of-type:first-letter {
+    font-size: 2em;
+    line-height: 1em;
+}
+
+div.post-content {
+  line-height: 1.7em;
+  font-size: 1.2em;
+}
+
+div.post-content ol {
+  line-height: 2em;
+  margin-left: 3em;
+}
+
+div.post-content h3 {
+  margin-top: 2em;
+  font-size: 1.5em;
+}
+
+div.post-content img {
+    margin: 20px;
+    padding: 5px;
+    border-width: 10px;
+    border-color: rgba(0,0,0,0.1);
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.centered {
+    text-align: center;
+    margin: auto;
+}
+
+// img[alt=Weather] {
+//     position: absolute;
+//     top: -60px;
+//     left: -70px;
+// }

@@ -1,0 +1,10 @@
+.thumbnail-viewer-overall {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+a.thumbnail-viewer-close  {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    color: #ffffff;
+}
+.thumbnail-viewer-close:hover {
+}
