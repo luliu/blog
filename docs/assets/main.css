@@ -444,9 +444,12 @@ div.post-content {
   line-height: 1.7em;
   font-size: 1.2em; }
 
+div.post-content code.highlighter-rouge {
+  font-size: 1em; }
+
 div.post-content ol {
   line-height: 2em;
-  margin-left: 3em; }
+  margin-left: 2em; }
 
 div.post-content h3 {
   margin-top: 2em;
