@@ -1,18 +1,16 @@
 ---
 layout: post
-title: "The Apollo iOS Reddit Client"
+title: "Stick to Native"
 categories: iOS design UI UX
 ---
 
-A former Apple intern released the [Apollo Reddit client][apollo]. Various tech blogs gave positive reviews of the app, praising its main value proposition: it feels extremely native to iOS. After using it for a few days, I agree, the app blends very nicely with iOS stock apps. But why is this news worthy? Is it abnormal for an app to use and feel native to the iOS platform? Or did this app push the boundary of third party "native-ness"? Are apps like this actually so few and far between? If so, what is motivating developers to venture outside of [Human Interface Guidelines][hig] and what's provided in UIKit? Is there anything wrong with being "standard"?
-
-All of these questions fundamentally boil down to two things:
+A former Apple intern released the [Apollo Reddit client][apollo], which received positive reviews on many tech blogs, praising its main value proposition: a Reddit client that feels very native to iOS. After using it for a few days, I agree with the assessment. But the hype and buzz bothered me slightly. Why is this news worthy? Is it abnormal for an iOS app to feel native to the iOS platform? Or did this app push the boundary of third party "native-ness"? Are apps like this actually so few and far between? If so, what is motivating developers to venture outside of [Human Interface Guidelines][hig] and UIKit? To answer these questions, we need to examine two things:
 
 1. What constitutes native iOS?
 1. Why is that _not_ good enough?
 
 ### What Constitutes Native iOS?
-One obvious benchmark is iOS stock apps. The model citizens of UIKit `Mail` and `Settings` affectively act as sample implementations of the HIGS, demonstrating all the typical behaviours of iOS we are familiar with. However, it's easy to notice other Apple apps differ quite considerably. The `Weather` app features an unique layout, interaction, and presentation, unlike most others. There's also `Reminders` and `Notes`, which for some reason still retains the dotted texture background. `Music` and `Podcasts` app utilize that Now Playing bar which pulls up to a full playlist manager. `iMessage` has the extension bar at the bottom that enlarges upon interaction.
+One obvious benchmark is iOS stock apps. The model citizens of UIKit `Mail` and `Settings` effectively act as reference implementations of the HIGS, demonstrating all the typical behaviours of iOS we are familiar with. However, it's easy to notice other Apple apps differ quite considerably. The `Weather` app features an unique layout, interaction, and presentation, unlike most others. There's also `Reminders` and `Notes`, which for some reason still retains the dotted texture background. `Music` and `Podcasts` app utilize that Now Playing bar which pulls up to a full playlist manager. `iMessage` has the extension bar at the bottom that enlarges upon interaction.
 
 <div class="centered">
 {% include thumbnailer.html img="reminder.jpeg" width="150px"%}
@@ -20,12 +18,12 @@ One obvious benchmark is iOS stock apps. The model citizens of UIKit `Mail` and 
 {% include thumbnailer.html img="itunes.jpeg"  width="150px"%}
 </div>
 
-So it's fair to say many stock apps have their own uniqueness, some hardly have much similarity with others. However, I noticed they do share some characteristics that string them together. In particular, two things are worth noting:
+While it's fair to say many stock apps have their own uniqueness, we can see that they do have some characteristics that string them together. In particular, two things are worth noting:
 
 1. Heavy reliance on tint colour and translucency.
-1. Never unnecessarily introduces controls that aren't provided in UIKit.
+1. Never unnecessarily introduces custom controls that aren't provided in UIKit.
 
-Generally I find that if an app checks these two boxes, it will likely come across as native and familiar to iOS users. It will be your typical iOS app so to speak. There are notable exceptions, such as Apple's `Clips` app, which draw heavy inspiration from `Snapchat`. But I interpret those apps a bit differently as their data is more image driven than text driven. Now that we have identified what constitutes native iOS, we are ready to tackle the next question.
+Generally I find that if an app checks these two boxes, it will likely come across as native and familiar to iOS users. There are notable exceptions, such as Apple's `Clips` app, which draw heavy inspiration from `Snapchat`. But I categorize those apps a bit differently as their data is more media driven than text driven. =Now that we have identified what constitutes native iOS, we are ready to tackle the next question.=
 
 ### Why Choose Brand Colour Over Translucency?
 There is a very simple reason for why tint colour and translucency isn't appealing to developers, and that is branding. iOS navigation bar is developers' favourite place to show off their brands, mostly because that was what Apple taught everyone to do prior to iOS 7. This design tradition really stuck with the community and many apps aren't breaking free from that heritage. Big titles such as `Facebook`, `Quora`, `Twitch` and `Amazon` all feature solid navigation bar painted in their brand colour. Although some have move away, for instance `YouTube` and `Netflix` have both embraced the new style and removed their bright red.
@@ -56,7 +54,7 @@ One definitive disadvantage is giving up the other property that makes an app fe
 
 Another disadvantage that may or may not materialize is the accompanying risk of having code built entirely on third party frameworks. I am not against abstraction, but not all abstractions are equal. Using write-once-deploy-everywhere solutions top to bottom can lock developers in their ecosystem (and language), making switching back to native implementation prohibitively expensive to do. At that point, the product is stuck with it and is at the whims of the third party vendor. This was particularly hazardous during the earlier days of iOS where things moved rather fast. Even though things are a lot more stable now, mobile is still anything but stale. Proper architecture and abstraction can often alleviate this risk, but this extra level of concern adds to the complexity of projects, which doesn't help with reducing development time.
 
-This is not to say code will magically stay up to date if developers choose to stick with native solution. Painful memories of ARC, auto layout, and Swift 3 transitions have probably scarred many iOS developers. But in the long run, these amortized efforts keep us away from irreversible technical debt. For the most part, Apple tries to make these transitions no more painful than they need to be. But their assistance generally only apply to developers who have been keeping their code up to date. As guests of UIKit, it is in developers' best interest to rely on UIKit API rather than third party, so that when deprecation happens, we can follow Apple's official guideline, which often gives the most efficient migration path. Third party vendor can certainly do an excellent job of abstracting developers away from these system changes underneath, but again, that benefit is greatly reduce if the vendor becomes unable, or worse, unwilling to keep updating their framework. This will result in devastating consequence which often lead to significant rewrites of the application.
+This is not to say code will magically stay up to date if developers choose to stick with native solution. Painful memories of ARC, auto layout, and Swift 3 transitions have probably scarred many iOS developers. But in the long run, these amortized efforts keep us away from irreversible technical debt. For the most part, Apple tries to make these transitions no more painful than they need to be. But their assistance generally only apply to developers who have been keeping their code up to date. As guests of UIKit, it is in developers' best interest to rely on UIKit API rather than third party, so that when deprecation happens, we can leverage Apple's official guideline that often gives the most efficient migration path. Third party vendor can certainly do an excellent job of abstracting developers away from these system changes underneath, but again, that benefit is greatly reduce if the vendor becomes unable, or worse, unwilling to keep updating their framework. This will result in devastating consequence which often lead to significant rewrites of the application.
 
 [apollo]: https://apolloapp.io
 [hig]: https://developer.apple.com/ios/human-interface-guidelines/overview/themes/
