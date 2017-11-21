@@ -25,6 +25,21 @@ header.site-header {
     color: $white;
 }
 
+ol {
+    list-style-type: none;
+    counter-reset: li-counter;
+}
+
+ol > li:before {
+    font-size: 1.2em;
+    margin-right: 0.5em;
+    line-height: 1em;
+    vertical-align: center;
+    font-style: italic;
+    content: counter(li-counter) ".";
+    counter-increment: li-counter;
+}
+
 div.post-content p:first-of-type:first-letter {
     font-size: 2em;
     line-height: 1em;
@@ -44,9 +59,13 @@ div.post-content ol {
   margin-left: 2em;
 }
 
-div.post-content h3 {
-  margin-top: 2em;
+div.post-content h2 {
+  margin-top: 3em;
   font-size: 1.5em;
+}
+
+div.post-content h3 {
+    margin-top: 2em;
 }
 
 div.post-content img {
@@ -63,8 +82,12 @@ div.post-content img {
     margin: auto;
 }
 
-// img[alt=Weather] {
-//     position: absolute;
-//     top: -60px;
-//     left: -70px;
-// }
+footer {
+    background-color: $black;
+    padding-top: 3em;
+    padding-bottom: 5em;
+}
+
+footer a:visited, footer a:hover, footer a {
+    color: $white;
+}
