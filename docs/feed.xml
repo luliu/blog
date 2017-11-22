@@ -5,7 +5,7 @@
   
   <link href="https://luliu.github.io/blog/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://luliu.github.io/blog/" rel="alternate" type="text/html" />
-  <updated>2017-10-29T18:11:06-04:00</updated>
+  <updated>2017-11-22T00:12:45-05:00</updated>
   <id>https://luliu.github.io/blog//</id>
 
   
@@ -18,5 +18,137 @@
 
   
 
+  
+  
+    <entry>
+      
+      <title type="html">Stick to Native</title>
+      
+      <link href="https://luliu.github.io/blog/2017/11/21/stay-native/" rel="alternate" type="text/html" title="Stick to Native" />
+      <published>2017-11-21T00:00:00-05:00</published>
+      <updated>2017-11-21T00:00:00-05:00</updated>
+      <id>https://luliu.github.io/blog/2017/11/21/stay-native</id>
+      <content type="html" xml:base="https://luliu.github.io/blog/2017/11/21/stay-native/">&lt;p&gt;Operating in the post-hype mobile era when most people don’t use more than &lt;a href=&quot;https://www.emarketer.com/Article/How-Many-Apps-Do-Smartphone-Owners-Use/1013309&quot;&gt;a handful of apps&lt;/a&gt;, developers are looking for every competitive edge they can find to appear on anyone’s radar. The most recent one that popped up is released by a former Apple intern, the &lt;a href=&quot;https://apolloapp.io&quot;&gt;Apollo Reddit client&lt;/a&gt;. It received positive reviews on many tech blogs, praising one of its main value proposition: a Reddit client that feels very native to iOS. This somewhat validated, and revived, the ever more hazy concept that it is a good thing for mobile Apps to look and behave “natively”. Even if we are to accept that as truth, these days one can still legitimately raise good questions about what that concretely means. Given the convergence of Android and iOS and the rise of React Native and Xamarin, where can we find the motivation to write the same feature twice in Swift and Kotlin? What is driving us to stick to the &lt;a href=&quot;https://developer.apple.com/ios/human-interface-guidelines/overview/themes/&quot;&gt;Human Interface Guidelines&lt;/a&gt;? It really boils down to &lt;strong&gt;maintainability&lt;/strong&gt;. We can dissect this by examining these two questions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;What constitutes native iOS?&lt;/li&gt;
+  &lt;li&gt;Why is that &lt;em&gt;not&lt;/em&gt; good enough?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;what-constitutes-native-ios&quot;&gt;What Constitutes Native iOS?&lt;/h2&gt;
+&lt;p&gt;One obvious example is iOS stock apps. The model citizens of UIKit &lt;code class=&quot;highlighter-rouge&quot;&gt;Mail&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Settings&lt;/code&gt; effectively act as reference implementations of the &lt;a href=&quot;https://developer.apple.com/ios/human-interface-guidelines/overview/themes/&quot;&gt;HIG&lt;/a&gt;, demonstrating all the typical behaviours of iOS we are familiar with. However, it’s easy to notice other Apple apps differ quite considerably. The &lt;code class=&quot;highlighter-rouge&quot;&gt;Weather&lt;/code&gt; app features an unique layout, interaction, and presentation, unlike most others. There’s also &lt;code class=&quot;highlighter-rouge&quot;&gt;Reminders&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Notes&lt;/code&gt;, which for some reason still retains the dotted texture background. &lt;code class=&quot;highlighter-rouge&quot;&gt;Music&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Podcasts&lt;/code&gt; app utilize that Now Playing bar which pulls up to a full playlist manager. &lt;code class=&quot;highlighter-rouge&quot;&gt;iMessage&lt;/code&gt; has the extension bar at the bottom that enlarges upon interaction.&lt;/p&gt;
+
+&lt;div class=&quot;centered&quot;&gt;
+&lt;a href=&quot;/blog/img/native/reminder.jpeg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 150px;&quot; src=&quot;/blog/img/native/reminder.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;a href=&quot;/blog/img/native/weather.jpeg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 150px;&quot; src=&quot;/blog/img/native/weather.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;a href=&quot;/blog/img/native/itunes.jpeg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 150px;&quot; src=&quot;/blog/img/native/itunes.jpeg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;While it’s fair to say many stock apps have their own uniqueness, we can see they do have some characteristics that string them together. In particular, two things are worth noting:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Heavy reliance on tint colour and translucency.&lt;/li&gt;
+  &lt;li&gt;Never unnecessarily introduces custom controls that aren’t provided in UIKit.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Generally I find that if an app checks these two boxes, it will likely come across as native and familiar to iOS users. There are notable exceptions, such as Apple’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Clips&lt;/code&gt; app, which draws heavy inspiration from &lt;code class=&quot;highlighter-rouge&quot;&gt;Snapchat&lt;/code&gt;. But I categorize those apps a bit differently as their data is more media driven than text driven. My guess is that most developers have dragged standard UIKit elements into a Storyboard and produced an extremely natively (or boring) looking toy app at least once in their life. But at some point, they decided that isn’t good enough. Why is that?&lt;/p&gt;
+
+&lt;h3 id=&quot;why-choose-brand-colour-over-translucency&quot;&gt;Why Choose Brand Colour Over Translucency?&lt;/h3&gt;
+&lt;p&gt;There is a very simple reason for why tint colour and translucency isn’t appealing to developers, and that is branding. iOS navigation bar is developers’ favourite place to show off their brands, mostly because that was what Apple taught everyone to do prior to iOS 7. This design tradition really stuck with the community and many apps aren’t breaking free from that heritage. Big titles such as &lt;code class=&quot;highlighter-rouge&quot;&gt;Facebook&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Quora&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Twitch&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Amazon&lt;/code&gt; all feature solid navigation bar painted in their brand colour. Although some have started to move away, for instance &lt;code class=&quot;highlighter-rouge&quot;&gt;YouTube&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Netflix&lt;/code&gt; have both embraced the new style and removed their bright red.&lt;/p&gt;
+
+&lt;div class=&quot;centered&quot;&gt;
+&lt;a href=&quot;/blog/img/native/facebook.jpg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 100px;&quot; src=&quot;/blog/img/native/facebook.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;a href=&quot;/blog/img/native/quora.jpg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 100px;&quot; src=&quot;/blog/img/native/quora.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;a href=&quot;/blog/img/native/twitch.jpg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 100px;&quot; src=&quot;/blog/img/native/twitch.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;a href=&quot;/blog/img/native/alexa.jpg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 100px;&quot; src=&quot;/blog/img/native/alexa.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;a href=&quot;/blog/img/native/old_youtube.png&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 200px;&quot; src=&quot;/blog/img/native/old_youtube.png&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;a href=&quot;/blog/img/native/netflix.jpg&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 100px;&quot; src=&quot;/blog/img/native/netflix.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Branding choices are usually very intentional and subjective. Their presence (or lack of) affect users’ perception of the product. A fairly recent survey conducted by The Verge showed some &lt;a href=&quot;https://www.theverge.com/2017/10/27/16552620/facebook-trust-survey-usage-popularity-fake-news&quot;&gt;60% of respondents did not know about Instagram’s relationship with Facebook&lt;/a&gt;. In this case Facebook managed to create distinct perceptions of their products by lack of branding (on Instagram), probably a calculated choice. However, some other choices may appear more random. For instance, the &lt;code class=&quot;highlighter-rouge&quot;&gt;Gmail&lt;/code&gt; app and some parts of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Google Maps&lt;/code&gt; app have the solid brand colour title bar, yet &lt;code class=&quot;highlighter-rouge&quot;&gt;YouTube&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Google&lt;/code&gt; app both tuned down on that dramatically. It’s hard to say exactly what (if anything) is driving these decisions.&lt;/p&gt;
+
+&lt;p&gt;I recommend against the usage of brand colour backgrounds on iOS (tint colour is always okay). By using brand colours, we give up on one of the two properties we identified earlier that make an app feel native. Whether that price is worth the brand recognition is arguable in most cases. My belief is that most brands aren’t strong enough for users to associate it with a particular colour. And if it is, then whether that extra branding is necessary becomes questionable. Essentially, the default case is that we probably don’t need it. Special cases can always occur though, but that decision should be made carefully and on a case by case basis.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-custom-controls&quot;&gt;Why Custom Controls?&lt;/h3&gt;
+&lt;p&gt;There are some apps that really push the mobile UX forward. They often have one or two defining interactions not offered by UIKit that greatly complements the user experience. Not only do they serve as corner stone of the app, but they go much further and become highly influential in the industry. For example, &lt;code class=&quot;highlighter-rouge&quot;&gt;Instagram&lt;/code&gt;’s double-tap, &lt;code class=&quot;highlighter-rouge&quot;&gt;Tinder&lt;/code&gt;’s swipe-left, &lt;code class=&quot;highlighter-rouge&quot;&gt;Pinterest&lt;/code&gt;’s flyout menu, and &lt;code class=&quot;highlighter-rouge&quot;&gt;Snapchat&lt;/code&gt;’s fullscreen presentation. In the case of &lt;code class=&quot;highlighter-rouge&quot;&gt;Clear Todos&lt;/code&gt;, its slide-to-complete gesture even got adopted by Apple and is now part of UIKit.&lt;/p&gt;
+
+&lt;div class=&quot;centered&quot;&gt;
+&lt;a href=&quot;/blog/img/native/cleartodos.png&quot; class=&quot;thumbnail-viewer&quot; style=&quot;text-decoration: none;&quot;&gt;
+  &lt;img class=&quot;thumbnail&quot; style=&quot;max-width: 150px;&quot; src=&quot;/blog/img/native/cleartodos.png&quot; alt=&quot;&quot; /&gt;
+&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;These iconic custom controls are rare and far between. They are usually tailored to address a particular use case specific to that App. They exist to serve the user. However, we also see apps that let you do things that can be accomplished with UIKit, but for some reason are furnished with a complete suite of custom controls that basically offer the same UX experience as UIKit. This phenomenon appears to be quite common with banks, retailers, and news apps. It is generally a symptom of using third party libraries or development framework, pursuing the goal of reducing development effort, test set size, and unifying the app experience with Android. Unfortunately, this is almost always a bad thing for the end user.&lt;/p&gt;
+
+&lt;h2 id=&quot;its-not-worth-it&quot;&gt;It’s Not Worth It&lt;/h2&gt;
+&lt;p&gt;One definitive disadvantage is giving up the other property that makes an app feel native. Except this time, the only reason is cost reduction. Depending on the framework in question, the experience can detract significantly from what iOS users expect. Badly implemented frameworks can also have significant impact on performance and stability, especially as iOS evolves and become backward incompatible with whichever iOS version the framework was last updated for. Modern write-once-deploy-everywhere solutions do a better job by essentially offering “super classes” of UIKit components at author time then compile down to native iOS code when built. But sometimes there is significant disjoint between the super classes for iOS and Android, one can legitimately ask, &lt;a href=&quot;https://developer.xamarin.com/api/root/MonoAndroid-lib/&quot;&gt;why bother&lt;/a&gt;?&lt;/p&gt;
+
+&lt;p&gt;Another disadvantage that may or may not materialize is the accompanying risk of having code built entirely on third party frameworks. I am not against abstraction, but not all abstractions are equal. Using write-once-deploy-everywhere solutions top to bottom can lock developers in their ecosystem (and language), making switching back to native implementation prohibitively expensive. At that point, the product is stuck with it and is at the whims of the third party vendor. This was particularly hazardous during the earlier days of iOS where things moved rather fast. Even though things are a lot more stable now, mobile platform is still anything but stale. Proper architecture and abstraction can often alleviate this risk, but this extra level of concern adds to the complexity of projects, which doesn’t help with reducing development time.&lt;/p&gt;
+
+&lt;p&gt;This is not to say code will magically stay up to date if developers choose to stick with native solution. Painful memories of ARC, auto layout, and Swift 3 transitions have probably scarred many iOS developers. But in the long run, these amortized efforts keep us away from irreversible technical debt. For the most part, Apple tries to make these transitions no more painful than they need to be. But their assistance generally only applies to developers who have been keeping their code up to date and native. As guests of UIKit, it is in developers’ best interest to rely on UIKit API rather than third party support, so that when deprecation happens, we can leverage Apple’s official guideline that often gives the most efficient migration path. Third party vendor can certainly do an excellent job of abstracting developers away from these system changes underneath, but again, that benefit is greatly reduce if the vendor becomes unable, or worse, unwilling to keep updating their framework. This will result in devastating consequence which often lead to significant rewrites of the application.&lt;/p&gt;
+
+&lt;h2 id=&quot;stay-native&quot;&gt;Stay Native&lt;/h2&gt;
+&lt;p&gt;If you can, stay native, because native &lt;em&gt;is&lt;/em&gt; the better choice for most of our needs.  If your App has an interaction UIKit can’t satisfy, first evaluate whether the interaction is reasonable before dropping in a custom control. The occasional embedded web view can significantly reduce workload, and if done right it will blend in seamlessly. But venturing out of native development workflow should be carefully evaluated with its risks assessed. Do not carelessly and mindlessly walk off the beaten path.&lt;/p&gt;
+
+&lt;script src=&quot;/blog/assets/thumbnailViewer.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/blog/assets/thumbnailer.css&quot; /&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+        <category term="iOS" />
+      
+        <category term="design" />
+      
+        <category term="UI" />
+      
+        <category term="UX" />
+      
+
+      
+
+      
+        <summary type="html">Operating in the post-hype mobile era when most people don’t use more than a handful of apps, developers are looking for every competitive edge they can find to appear on anyone’s radar. The most recent one that popped up is released by a former Apple intern, the Apollo Reddit client. It received positive reviews on many tech blogs, praising one of its main value proposition: a Reddit client that feels very native to iOS. This somewhat validated, and revived, the ever more hazy concept that it is a good thing for mobile Apps to look and behave “natively”. Even if we are to accept that as truth, these days one can still legitimately raise good questions about what that concretely means. Given the convergence of Android and iOS and the rise of React Native and Xamarin, where can we find the motivation to write the same feature twice in Swift and Kotlin? What is driving us to stick to the Human Interface Guidelines? It really boils down to maintainability. We can dissect this by examining these two questions:</summary>
+      
+
+      
+      
+    </entry>
+  
   
 </feed>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://luliu.github.io/blog/2017/11/21/stay-native/</loc>
+<lastmod>2017-11-21T00:00:00-05:00</lastmod>
+</url>
+<url>
 <loc>https://luliu.github.io/blog/404/</loc>
 </url>
 <url>
@@ -11,5 +15,17 @@
 </url>
 <url>
 <loc>https://luliu.github.io/blog/</loc>
+</url>
+<url>
+<loc>https://luliu.github.io/blog/categories/ios/</loc>
+</url>
+<url>
+<loc>https://luliu.github.io/blog/categories/design/</loc>
+</url>
+<url>
+<loc>https://luliu.github.io/blog/categories/ui/</loc>
+</url>
+<url>
+<loc>https://luliu.github.io/blog/categories/ux/</loc>
 </url>
 </urlset>

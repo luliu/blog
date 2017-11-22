@@ -436,6 +436,19 @@ header.site-header {
 .site-nav .page-link:hover {
   color: #FDFFFF; }
 
+ol {
+  list-style-type: none;
+  counter-reset: li-counter; }
+
+ol > li:before {
+  font-size: 1.2em;
+  margin-right: 0.5em;
+  line-height: 1em;
+  vertical-align: center;
+  font-style: italic;
+  content: counter(li-counter) ".";
+  counter-increment: li-counter; }
+
 div.post-content p:first-of-type:first-letter {
   font-size: 2em;
   line-height: 1em; }
@@ -451,9 +464,12 @@ div.post-content ol {
   line-height: 2em;
   margin-left: 2em; }
 
-div.post-content h3 {
-  margin-top: 2em;
+div.post-content h2 {
+  margin-top: 3em;
   font-size: 1.5em; }
+
+div.post-content h3 {
+  margin-top: 2em; }
 
 div.post-content img {
   margin: 20px;
@@ -466,3 +482,7 @@ div.post-content img {
 .centered {
   text-align: center;
   margin: auto; }
+
+footer {
+  padding-top: 3em;
+  padding-bottom: 5em; }
